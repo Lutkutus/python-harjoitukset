@@ -4,7 +4,7 @@
 
 ## Moduuli 1
 
-Tein tehtävät 1 ja 2. 
+Tehtävät 1 ja 2 tehty!
 
 ## Moduuli 2
 
