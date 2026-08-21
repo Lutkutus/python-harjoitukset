@@ -1,2 +1,1 @@
-print("Hello :D Olen Tiio")
-
+print("Hei, Tiio Vossi!")
