@@ -1,4 +1,3 @@
-# Tää on niiku placeholder, ku piti palauttaa 25.9. nii en ollu viel ideoinu
 
 class Esine:
     def __init__(self, nimi, paino):
