@@ -1,0 +1,7 @@
+Tia
+Puisto
+True,True,True
+Lääkeruisku;0.1;0
+Iso pullo;0.1;0.45
+Iso pullo;0.1;0.45
+Tölkki;0.02;0.1

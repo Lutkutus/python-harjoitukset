@@ -1,0 +1,8 @@
+================================
+  -Sörkkä Sidequest Simulator-
+================================
+
+Tervetuloa Sörkkä Sidequest Simulaattoriin!
+Tehtävänä on kerätä rahaa tavalla millä hyvänsä,
+jotta voit olla hyvä kansalainen ja lahjoittaa
+ne vähävaraisille.

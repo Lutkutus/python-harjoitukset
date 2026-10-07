@@ -1,0 +1,12 @@
+============
+  -Ohjeet-
+============
+
+1 = Näytä reppu
+2 = Tutki nykyistä paikkaa
+3 = Liiku
+4 = Tallenna peli
+5 = Lataa peli
+6 = Lopeta peli
+
+Puistossa voit tutkia roskiksia numeroilla 1, 2 ja 3.
