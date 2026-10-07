@@ -1,4 +1,4 @@
-Olen tehnyt kaikki projekti neloseen asti!
+Olen tehnyt kaikki projekti vitoseen asti!
 
 
 Ideointi:
