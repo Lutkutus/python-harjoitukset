@@ -46,6 +46,11 @@ def tallenna_peli(pelaaja, roskikset):
 
         tiedosto.write(",".join(str(roskis) for roskis in roskikset) + "\n")
 
+        if pelaaja.tehtava is None:
+            tiedosto.write("Ei tehtavaa\n")
+        else:
+            tiedosto.write(pelaaja.tehtava + "\n")
+
         for esine in pelaaja.reppu:
             tiedosto.write(f"{esine.nimi};{esine.paino};{esine.arvo}\n")
 
@@ -75,6 +80,15 @@ def lataa_peli(pelaaja, piritori, puisto, roskikset):
 
         for i in range(3):
             roskikset[i] = tallennetut_roskikset[i] == "True"
+
+        # Ladataan tehtävä
+
+        tehtava = rivit[3].strip()
+
+        if tehtava == "Ei tehtavaa":
+            pelaaja.tehtava = None
+        else:
+            pelaaja.tehtava = tehtava
 
 
         # Ladataan reppu
@@ -114,13 +128,51 @@ def lataa_peli(pelaaja, piritori, puisto, roskikset):
 
 
 #Kaikki muut funktiot
-def nayta_reppu(reppu):
-        if len(reppu) == 0:
-            print("Reppu on tyhjä.")
+
+def aloitus_keskustelu(pelaaja):
+    kysymys1 = False
+    kysymys2 = False
+
+    print("\nHeräät Piritorin penkiltä.")
+    print("Viereisellä penkillä istuu varsin omituinen hemmo.")
+    print("Menet juttelemaan hänelle.")
+
+    while True:
+        print("\nMitä haluat kysyä?")
+        print("1. Mikä on elämän tarkoitus?")
+        print("2. Kuka sää oot?")
+
+        valinta = input("Valitse: ")
+
+        if valinta == "1":
+            print('\n"Voi kuules... Elämän tarkoitus on olla hyvä ihminen."')
+            kysymys1 = True
+
+        elif valinta == "2":
+            print('\n"Ei sillä ole väliä."')
+            kysymys2 = True
+
         else:
-            print("Repussa on:")
-            for esine in reppu:
-                print(esine.nimi)
+            print("Tuntematon valinta.")
+
+        if kysymys1 == True and kysymys2 == True:
+            print("\nHemmo katsoo sinua hetken.")
+            print('"Kuule, voisikkos jeesaa mua yhessä jutussa?"')
+            print('"Käyppä ostaa mulle bisse tosta Ässästä."')
+            print("\nHuomaat, että sinulla ei ole yhtään rahaa.")
+
+            pelaaja.tehtava = "Hae Hemmolle bisse"
+
+            print(f"\nSait tehtävän: {pelaaja.tehtava}")
+            break
+
+def nayta_reppu(reppu):
+    if len(reppu) == 0:
+        print("Reppu on tyhjä.")
+    else:
+        print("Repussa on:")
+        for esine in reppu:
+            print(esine.nimi)
 
 def tutki(pelaaja, roskikset):
     print(f"Lähdit tutkimaan paikkaa {pelaaja.sijainti.nimi}.")
@@ -281,9 +333,10 @@ else:
         print("1. Näytä reppu")
         print("2. Tutki")
         print("3. Liiku")
-        print("4. Tallenna peli")
-        print("5. Lataa peli")
-        print("6. Lopeta")
+        print("4. Näytä tehtävä")
+        print("5. Tallenna peli")
+        print("6. Lataa peli")
+        print("7. Lopeta")
 
         komento = input("Anna komento: ").lower()
 
@@ -303,12 +356,20 @@ else:
                 pelaaja.liiku(puisto)
 
         elif komento == "4":
-            tallenna_peli(pelaaja, roskikset)
+
+            if pelaaja.tehtava is None:
+                print("Sinulla ei ole aktiivista tehtävää.")
+
+            else:
+                print(f"Aktiivinen tehtävä: {pelaaja.tehtava}")
 
         elif komento == "5":
-            lataa_peli(pelaaja, piritori, puisto, roskikset)
+            tallenna_peli(pelaaja, roskikset)
 
         elif komento == "6":
+            lataa_peli(pelaaja, piritori, puisto, roskikset)
+
+        elif komento == "7":
             print("Peli suljetaan.")
             break
 
