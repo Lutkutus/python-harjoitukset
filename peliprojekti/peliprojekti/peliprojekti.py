@@ -23,6 +23,7 @@ class Pelaaja:
         self.nimi = nimi
         self.reppu = []
         self.sijainti = sijainti
+        self.tehtava = None
 
     def liiku(self, huone):
         self.sijainti = huone
@@ -95,7 +96,7 @@ def lataa_peli(pelaaja, piritori, puisto, roskikset):
 
         pelaaja.reppu = []
 
-        for rivi in rivit[3:]:
+        for rivi in rivit[4:]:
             tiedot = rivi.strip().split(";")
 
             nimi = tiedot[0]
@@ -319,6 +320,7 @@ else:
             print(f"Tervetuloa peliin, {pelaaja.nimi}!")
             print(pelaaja.sijainti.kuva)
 
+            aloitus_keskustelu(pelaaja)
     else:
         nimi = input("Anna nimesi: ")
         pelaaja = Pelaaja(nimi, piritori)
@@ -326,6 +328,7 @@ else:
         print(f"Tervetuloa peliin, {pelaaja.nimi}!")
         print(pelaaja.sijainti.kuva)
 
+        aloitus_keskustelu(pelaaja)
     komento = ""
 
     while komento != "lopeta": 
