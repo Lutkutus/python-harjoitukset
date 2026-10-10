@@ -1,7 +1,9 @@
-Tia
-Puisto
-True,True,True
-Lääkeruisku;0.1;0
-Iso pullo;0.1;0.45
-Iso pullo;0.1;0.45
-Tölkki;0.02;0.1
+re
+Piritori
+False,False,False
+Hae hemmolle Marlboro Punanen ja 2 bisseä
+0.29
+Bisse;0.33;0
+Bisse;0.33;0
+Bisse;0.33;0
+Marlboron Punane;0.12;0
