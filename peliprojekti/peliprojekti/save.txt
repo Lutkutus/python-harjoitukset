@@ -1,9 +1,7 @@
-re
+tiio
 Piritori
 False,False,False
-Hae hemmolle Marlboro Punanen ja 2 bisseä
-0.29
-Bisse;0.33;0
-Bisse;0.33;0
-Bisse;0.33;0
-Marlboron Punane;0.12;0
+Hemmon tehtävät valmis
+120.28
+Mummon tehtävä;valmis
+Myyjä tavattu;True

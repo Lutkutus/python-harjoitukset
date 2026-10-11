@@ -385,14 +385,13 @@ def puhu_hemmolle(pelaaja):
                 print(f"Puuttuu bissejä: {2 - bisseja}")
 
     elif pelaaja.tehtava == "Hemmon seuraava tehtävä":
-        # Vanha tallennus saattoi jäädä tähän aiempaan välivaiheeseen.
         aloita_piritehtava(pelaaja)
 
     elif pelaaja.tehtava == "Hae Hemmolle piriä":
         piri = next((e for e in pelaaja.reppu if e.nimi == "Piri"), None)
         if piri is None:
             print('"Käy siellä puistossa. Se tyyppi osaa auttaa."')
-            print("Tarvitset ostokseen 30,00 €.")
+            print("Tarvitset ostokseen 25,00 €.")
         else:
             pelaaja.reppu.remove(piri)
             pelaaja.raha = round(pelaaja.raha + 120, 2)
@@ -474,14 +473,16 @@ def puhu_myyjalle(pelaaja):
     if any(e.nimi == "Piri" for e in pelaaja.reppu):
         print('"Veli sullahan on se jo."')
         return
-    print(f"\nRahaa: {pelaaja.raha:.2f} €. Piri maksaa 30,00 €.")
+
+    pirin_hinta = 25
+    print(f"\nRahaa: {pelaaja.raha:.2f} €. Piri maksaa {pirin_hinta} €.")
     print("1. Osta\n2. Poistu")
     valinta = input("Valitse: ").strip()
     if valinta == "1":
-        if pelaaja.raha < 30:
-            print(f"Rahaa puuttuu vielä {30 - pelaaja.raha:.2f} €. Voit palata myöhemmin.")
+        if pelaaja.raha < pirin_hinta:
+            print(f"Rahaa puuttuu vielä {pirin_hinta - pelaaja.raha:.2f} €. Voit palata myöhemmin.")
         else:
-            osta_tuote(pelaaja, "Piri", 0.01, 30.00)
+            osta_tuote(pelaaja, "Piri", 0.01, pirin_hinta)
             print("Vie ostos Hemmolle Piritorille.")
     elif valinta != "2":
         print("Tuntematon valinta.")
@@ -545,13 +546,19 @@ def tutki_roskis(pelaaja, roskikset):
 
     else:
         roskikset[numero] = True
+        maara = random.randint(0, 3)
 
-        loyto = random.choice([Esine("Tölkki", 0.02, 0.10), Esine("Pieni pullo", 0.05, 0.20), Esine("Iso pullo", 0.1, 0.45)])
+        if maara == 0:
+            print("Roskiksessa ei ollut mitään.")
 
-        pelaaja.reppu.append(loyto)
+        else:
+            for i in range(maara):
+                loyto = random.choice([Esine("Tölkki", 0.02, 0.10), Esine("Pieni pullo", 0.05, 0.20), Esine("Iso pullo", 0.1, 0.45)])
 
-        print(f"Löysit: {loyto.nimi}!")
-        print(f"Sen pantti on {loyto.arvo:.2f} €")
+                pelaaja.reppu.append(loyto)
+
+                print(f"Löysit: {loyto.nimi}!")
+                print(f"Sen pantti on {loyto.arvo:.2f} €")
 
 def lue_tiedosto(nimi):
     try:
@@ -575,8 +582,8 @@ def auta_nalkaista(pelaaja):
     if pelaaja.tehtava != "Hemmon tehtävät valmis":
         return
 
-    print("\nNäet seinää vasten istuvan tyypin, joka...")
-    # Kirjoita tähän lisää omaa tekstiä print-komennoilla.
+    print("\nNäet seinää vasten istuvan tyypin, joka näyttää apuatarvitsevalta.")
+    print("Mietit, mitä hemmo vastasi kysymykseesi...")
 
     print(f"Sinulla on {pelaaja.raha:.2f} €.")
     vastaus = input("Haluatko lahjoittaa kaikki rahasi? k/e: ").lower()
@@ -590,9 +597,11 @@ def auta_nalkaista(pelaaja):
 
         else:
             print("Sinulla ei ole rahaa lahjoitettavaksi.")
+    elif vastaus == "e":
+        print("Jatkat matkaa kauppaan.")
 
     else:
-        print("Jatkat matkaa kauppaan.")
+        print("Tuntematon komento")
 
 def lahde_kamppiin(pelaaja, piritori):
     if pelaaja.tehtava != "Hemmon tehtävät valmis":
@@ -857,7 +866,14 @@ else:
                 print("Sinulla ei ole aktiivista tehtävää.")
 
             else:
-                print(f"Aktiivinen tehtävä: {pelaaja.tehtava}")
+                if pelaaja.tehtava is not None:
+                    print(f"Hemmo: {pelaaja.tehtava}")
+
+                if pelaaja.mummon_tehtava == "etsi ruisku":
+                    print("Mummo: Etsi kadonnut lääkeruisku Piritorilta.")
+
+                if pelaaja.tehtava is None and pelaaja.mummon_tehtava == "ei aloitettu":
+                    print("Sinulla ei ole tehtäviä.")
 
         elif komento == "6":
             tallenna_peli(pelaaja, roskikset)

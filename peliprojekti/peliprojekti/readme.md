@@ -1,7 +1,8 @@
-Olen tehnyt kaikki projekti vitoseen asti!
+Olen tehnyt kaikki projekti loppuun asti!
 
 
 Ideointi:
+(Tää oli vaa ideointia, mutta kaikki jutut eivät loppujen lopuksi tulleet peliin)
 
 Pullon voi viedä palautukseen, siitä saa 0,10 euroa - 0,45 euroa
 Puistossa voi lahjoittaa rahaa
