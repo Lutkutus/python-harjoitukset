@@ -116,15 +116,6 @@ def lataa_peli(pelaaja, piritori, puisto, smarket, roskikset):
             elif tiedot[0] == "Myyjä tavattu":
                 pelaaja.myyja_tavattu = tiedot[1] == "True"
 
-        for rivi in rivit[5:]:
-            tiedot = rivi.strip().split(";")
-
-            if tiedot[0] == "Mummon tehtävä":
-                pelaaja.mummon_tehtava = tiedot[1]
-
-            elif tiedot[0] == "Myyjä tavattu":
-                pelaaja.myyja_tavattu = tiedot[1] == "True"
-
             else:
                 nimi = tiedot[0]
                 paino = float(tiedot[1])
@@ -468,7 +459,7 @@ def puhu_myyjalle(pelaaja):
         return
     if not pelaaja.myyja_tavattu:
         print('\nSanot: "Se Piritorilla istuva äijä lähetti mut."')
-        print('"Joo, thats my bro. Se tekis 30 euroa."')
+        print('"Joo, thats my bro. Se tekis 25 euroa."')
         pelaaja.myyja_tavattu = True
     if any(e.nimi == "Piri" for e in pelaaja.reppu):
         print('"Veli sullahan on se jo."')
@@ -515,10 +506,6 @@ def puhu(pelaaja):
             auta_nalkaista(pelaaja)
         else:
             print("Täällä ei ole ketään, jolle haluaisit puhua.")
-
-
-    elif pelaaja.sijainti.nimi == "S-Market":
-        print("Täällä ei ole ketään, jolle haluaisit puhua.")
 
 def tutki(pelaaja, roskikset):
     print(f"Lähdit tutkimaan paikkaa {pelaaja.sijainti.nimi}.")
