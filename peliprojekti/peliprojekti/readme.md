@@ -1,4 +1,11 @@
-Olen tehnyt kaikki projekti loppuun asti!
+Olen tehnyt kaikki projektin loppuun asti!
+
+Pienet lisäohjeet pelii:
+
+Kun Hemmon vika tehtävä on tehty, avautuu kaikki endingit, joihin pääsee "liiku" komennolla (S-market ja metroasema).
+Bad ending tulee, jos S-marketista ostaa 100-päckin bisseä.
+Mid ending tulee, jos liikut metroasemalle ja karkaat kamppiin.
+Good ending tulee, jos annat rahasi köyhälle.
 
 
 Ideointi:
