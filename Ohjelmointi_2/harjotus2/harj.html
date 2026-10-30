@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Ohjelma alkaa");
+
+        let pelaaja1 = prompt("Mitkä on pelaajan 1 pisteet?");
+
+        let pelaaja2 = prompt("Mitkä on pelaajan 2 pisteet?");
+
+        let pelaaja3 = prompt("Mitkä on pelaajan 3 pisteet?");
+
+        const tulos = parseInt(pelaaja1) + parseInt(pelaaja2) + parseInt(pelaaja3);
+        const keskiarvo = tulos / 3;
+
+        document.querySelector("#target").innerHTML = 'Yhteistulos: $(tulos), $(Keskiarvo)';
+
+        console.log("Ohjelma loppuu");
+    </script>
+
+</body>
+</html>

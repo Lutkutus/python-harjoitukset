@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noppasimulator</title>
+</head>
+<body>
+    <h1>Noppien Todennäköisyys</h1>
+    <p id="tulos"></p>
+
+    <script>
+        alert("JavaScript toimii!");
+        let nopat = Number(prompt("Anna noppien määrä:"));
+        let summa = Number(prompt("Anna haluttu summa:"));
+
+        let osumat = 0;
+        let heitot = 10000;
+
+        for (let i = 0; i < heitot; i++) {
+            let silmaluvut = 0;
+
+            for (let j = 0; j < nopat ; j++) {
+                let noppa = Math.floor(Math.random() * 6) + 1;
+                silmaluvut += noppa;
+            }
+
+            if (silmaluvut == summa) {
+                osumat++;
+            }
+        }
+
+        let todennakoisyys = (osumat / heitot) * 100;
+        document.getElementById("tulos").innerHTML = `Todennäköisyys saada summa ${summa} ${nopat} nopalla on ${todennakoisyys.toFixed(2)}%`;
+    </script>
+
+</body>
+</html>
